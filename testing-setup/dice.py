@@ -1,11 +1,11 @@
 import random
 import time
 
-number_of_trials = 1000000
+number_of_trials = 100
 running_total = 0
 
 number = 1
-goal_times_in_a_row = 2
+goal_times_in_a_row = 9
 
 def roll(number, times_in_a_row):
     if random.randint(1,6) == number:
@@ -29,7 +29,7 @@ def find_once(goal_times_in_a_row, number):
     return i
 
 
-# x = find_once(i, times_in_a_row, goal_times_in_a_row, number)
+# x = find_once(goal_times_in_a_row, number)
 # print(f"it took {x} rolls to get {goal_times_in_a_row} {number}'s in a row")
 
 for trial in range(number_of_trials):
