@@ -1,11 +1,10 @@
 import random
-import time
-
-number_of_trials = 100
+import cProfile
+number_of_trials = 10
 running_total = 0
 
 number = 1
-goal_times_in_a_row = 9
+goal_times_in_a_row = 2
 
 def roll(number, times_in_a_row):
     if random.randint(1,6) == number:
@@ -31,11 +30,13 @@ def find_once(goal_times_in_a_row, number):
 
 # x = find_once(goal_times_in_a_row, number)
 # print(f"it took {x} rolls to get {goal_times_in_a_row} {number}'s in a row")
+def run_trial(number_of_trials, running_total):
+    for trial in range(number_of_trials):
 
-for trial in range(number_of_trials):
+        trial_result = find_once(goal_times_in_a_row, number)
 
-    trial_result = find_once(goal_times_in_a_row, number)
-
-    running_total += trial_result
+        running_total += trial_result
+    return running_total
  
-print("final average: " + str(running_total/number_of_trials))
+print("final average: " , str(run_trial(number_of_trials, running_total)/number_of_trials))
+cProfile.run("run_trial(number_of_trials, running_total)")
